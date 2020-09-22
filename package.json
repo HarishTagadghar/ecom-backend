@@ -22,10 +22,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node app.js"
-  },
-  "engines": {
-    "node": "10.16.3"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC"
