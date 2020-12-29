@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { array } = require("../utils/multer");
 const { ObjectId } = mongoose.Schema;
 
 const productSchema = new mongoose.Schema(
@@ -31,16 +32,13 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    photo: {
-      data: Buffer,
-      contentType: String
-    },
-    quantity:Number,
-    youtube:{
-      type:String,
-      trim:true
-    }
+    image: {
+      required:true,
+      type:Array
 
+    },
+    quantity:Number
+   
   },
   { timestamps: true }
 );
