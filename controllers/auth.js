@@ -11,8 +11,9 @@ exports.signup = (req, res) => {
       error: errors.array()[0].msg
     });
   }
-
-  const user = new User(req.body);
+  let { name, email, password } = req.body;
+  email = email.toLowerCase();
+  const user = new User({ name, email, password });
   user.save((err, user) => {
     if (err) {
       return res.status(400).json({
@@ -29,8 +30,8 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
   const errors = validationResult(req);
-  const { email, password } = req.body;
-
+  let { email, password } = req.body;
+  email = email.toLowerCase();
   if (!errors.isEmpty()) {
     return res.status(422).json({
       error: errors.array()[0].msg
